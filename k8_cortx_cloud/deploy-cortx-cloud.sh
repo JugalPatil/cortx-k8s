@@ -991,12 +991,16 @@ function deployCortxData()
         node_selector=${node_selector_list[i]}
         helm install "cortx-data-$node_name" cortx-cloud-helm-pkg/cortx-data \
             --set cortxdata.name="cortx-data-pod-$node_name" \
+            --set cortxdata.s3name="cortx-s3-pod-$node_name" \
             --set cortxdata.image=$cortxdata_image \
             --set cortxdata.nodename=$node_name \
             --set cortxdata.mountblkinfo="mnt-blk-info-$node_name.txt" \
             --set cortxdata.service.clusterip.name="cortx-data-clusterip-svc-$node_name" \
             --set cortxdata.service.headless.name="cortx-data-headless-svc-$node_name" \
             --set cortxdata.service.loadbal.name="cortx-data-loadbal-svc-$node_name" \
+            --set cortxdata.service.s3clusterip.name="cortx-s3-clusterip-svc-$node_name" \
+            --set cortxdata.service.s3headless.name="cortx-s3-headless-svc-$node_name" \
+            --set cortxdata.service.s3loadbal.name="cortx-s3-loadbal-svc-$node_name" \
             --set cortxgluster.pv.name=$gluster_pv_name \
             --set cortxgluster.pv.mountpath=$shared_storage \
             --set cortxgluster.pvc.name=$gluster_pvc_name \

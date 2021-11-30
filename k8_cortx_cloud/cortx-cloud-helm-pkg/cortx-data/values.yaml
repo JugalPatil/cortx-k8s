@@ -1,5 +1,6 @@
 namespace: default
 cortxdata:
+  s3name: cortx-s3-pod
   name: cortx-data-pod
   image: centos:7
   nodename: node-1
@@ -19,6 +20,12 @@ cortxdata:
       name: cortx-data-headless-svc
     loadbal:
       name: cortx-data-loadbal-svc
+    s3clusterip:
+      name: cortx-s3-clusterip-svc
+    s3headless:
+      name: cortx-s3-headless-svc
+    s3loadbal:
+      name: cortx-s3-loadbal-svc
   cfgmap:
     mountpath: /etc/cortx/solution
     volmountname: config001
